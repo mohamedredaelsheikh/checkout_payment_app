@@ -1,3 +1,4 @@
+import 'package:checkout_payment_app/features/checkout_payment/presentation/views/payment_Details_view.dart';
 import 'package:checkout_payment_app/features/checkout_payment/presentation/views/widgets/custom_button.dart';
 import 'package:checkout_payment_app/features/checkout_payment/presentation/views/widgets/order_info_item.dart';
 import 'package:checkout_payment_app/features/checkout_payment/presentation/views/widgets/total_price_widget.dart';
@@ -40,7 +41,13 @@ class MyCardViewBody extends StatelessWidget {
           const SizedBox(
             height: 16,
           ),
-          const CustomButton(),
+          CustomButton(
+            onTap: () {
+              Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+                return const PaymentDetailsView();
+              }));
+            },
+          ),
           const SizedBox(
             height: 12,
           ),
