@@ -16,8 +16,7 @@ class PaymentMethodItem extends StatelessWidget {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(15),
             side: BorderSide(
-              color:
-                  isActive ? const Color(0xff34A853) : const Color(0xff000000),
+              color: isActive ? const Color(0xff34A853) : Colors.grey,
               width: 1.5,
             ),
           ),
@@ -37,7 +36,8 @@ class PaymentMethodItem extends StatelessWidget {
         child: Center(
           child: SvgPicture.asset(
             image,
-            height: 24,
+            // height: 24,
+            fit: BoxFit.scaleDown,
           ),
         ),
       ),
