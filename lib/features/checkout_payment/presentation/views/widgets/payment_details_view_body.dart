@@ -1,3 +1,4 @@
+import 'package:checkout_payment_app/features/checkout_payment/presentation/views/thank_you_view.dart';
 import 'package:checkout_payment_app/features/checkout_payment/presentation/views/widgets/custom_button.dart';
 import 'package:checkout_payment_app/features/checkout_payment/presentation/views/widgets/custom_credit_card.dart';
 import 'package:checkout_payment_app/features/checkout_payment/presentation/views/widgets/payment_methods_list_view.dart';
@@ -39,6 +40,10 @@ class _PaymentDetailsViewBodyState extends State<PaymentDetailsViewBody> {
                 } else {
                   autovalidateMode = AutovalidateMode.always;
                   setState(() {});
+                  Navigator.of(context)
+                      .push(MaterialPageRoute(builder: (context) {
+                    return const ThankYouView();
+                  }));
                 }
               },
               text: "Payment",
