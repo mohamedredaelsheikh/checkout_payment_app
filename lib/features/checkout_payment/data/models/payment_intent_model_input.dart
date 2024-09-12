@@ -1,10 +1,11 @@
 import 'dart:ffi';
 
-class PaymentIntentModelInput {
+class PaymentIntentInputModel {
   final Double amount;
   final String currency;
 
-  PaymentIntentModelInput({required this.amount, required this.currency});
+  PaymentIntentInputModel.paymentIntentInputModel(
+      {required this.amount, required this.currency});
   tojosn() {
     return {
       "amount": amount,
