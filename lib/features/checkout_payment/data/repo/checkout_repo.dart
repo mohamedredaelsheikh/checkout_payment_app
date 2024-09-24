@@ -4,5 +4,5 @@ import 'package:dartz/dartz.dart';
 
 abstract class CheckoutRepo {
   Future<Either<Failure, void>> makePayment(
-      {required PaymentIntentInputModel paymentIntentModelInput});
+      {required PaymentIntentInputModel paymentIntentInputModel});
 }

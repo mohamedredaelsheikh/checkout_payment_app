@@ -9,10 +9,10 @@ class CheckoutRepoImple extends CheckoutRepo {
 
   @override
   Future<Either<Failure, void>> makePayment(
-      {required PaymentIntentInputModel paymentIntentModelInput}) async {
+      {required PaymentIntentInputModel paymentIntentInputModel}) async {
     try {
       await stripeService.makePayment(
-          paymentIntentInputModel: paymentIntentModelInput);
+          paymentIntentInputModel: paymentIntentInputModel);
 
       return right(null);
     } on Exception catch (e) {
