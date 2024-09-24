@@ -1,8 +1,10 @@
+import 'package:checkout_payment_app/features/checkout_payment/data/models/payment_intent_model_input.dart';
 import 'package:checkout_payment_app/features/checkout_payment/presentation/manger/cubit/stripe_payment_cubit.dart';
 import 'package:checkout_payment_app/features/checkout_payment/presentation/views/thank_you_view.dart';
 import 'package:checkout_payment_app/features/checkout_payment/presentation/views/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_stripe/flutter_stripe.dart';
 
 class CustomButtonBlocConsumer extends StatelessWidget {
   const CustomButtonBlocConsumer({
@@ -20,12 +22,19 @@ class CustomButtonBlocConsumer extends StatelessWidget {
           }));
         }
         if (state is StripePaymentFailure) {
+          Navigator.of(context).pop();
           SnackBar snackBar = SnackBar(content: Text(state.errorMessage));
           ScaffoldMessenger.of(context).showSnackBar(snackBar);
         }
       },
       builder: (context, state) {
-        return const CustomButton(
+        return CustomButton(
+            onTap: () {
+              PaymentIntentInputModel paymentIntentInputModel =
+                  PaymentIntentInputModel(amount: "100", currency: "USD");
+              BlocProvider.of<StripePaymentCubit>(context).makePayment(
+                  paymentIntentInputModel: paymentIntentInputModel);
+            },
             isLoading: State is StripePaymentLoading ? true : false,
             text: "Continue");
       },
