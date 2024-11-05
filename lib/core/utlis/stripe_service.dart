@@ -48,4 +48,16 @@ init payment sheet (paymentIntentClientSecret)
         paymentIntentClientSecret: paymentIntentModel.clientSecret!);
     await disPalyPaymentSheet();
   }
+
+  Future<PaymentIntentModel> createCustomers(
+      PaymentIntentInputModel paymentIntentModelInput) async {
+    var response = await apiService.Post(
+      body: paymentIntentModelInput.tojosn(),
+      contentType: Headers.formUrlEncodedContentType,
+      url: "https://api.stripe.com/v1/customers",
+      token: ApiKeys.secretKey,
+    );
+    var paymentIntentModel = PaymentIntentModel.fromJson(response.data);
+    return paymentIntentModel;
+  }
 }

@@ -4,7 +4,6 @@ import 'package:checkout_payment_app/features/checkout_payment/presentation/view
 import 'package:checkout_payment_app/features/checkout_payment/presentation/views/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_stripe/flutter_stripe.dart';
 
 class CustomButtonBlocConsumer extends StatelessWidget {
   const CustomButtonBlocConsumer({
@@ -31,7 +30,10 @@ class CustomButtonBlocConsumer extends StatelessWidget {
         return CustomButton(
             onTap: () {
               PaymentIntentInputModel paymentIntentInputModel =
-                  PaymentIntentInputModel(amount: "100", currency: "USD");
+                  PaymentIntentInputModel(
+                      amount: "100",
+                      currency: "USD",
+                      customerId: "cus_RA2dmoz6BvrGgS");
               BlocProvider.of<StripePaymentCubit>(context).makePayment(
                   paymentIntentInputModel: paymentIntentInputModel);
             },
