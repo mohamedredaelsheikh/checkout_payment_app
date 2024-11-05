@@ -1,21 +1,33 @@
+import 'dart:convert';
+
 class AssociatedObject {
 	String? id;
 	String? type;
 
 	AssociatedObject({this.id, this.type});
 
-	factory AssociatedObject.fromIdEphkey1QHj3qGqBKivowsmYd2PzpAdObjectEphemeralKeyAssociatedObjectsIdCusRa2dmoz6BvrGgSTypeCustomerCreated1730798910Expires1730802510LivemodeFalseSecretEkTestYwNjdF8xUhnsuGtHcUjLaXZvd3NtLev2aDljdDNqNzVjWkRRak9InXpFaDbhnuVwT3M5U3g00abRc0C3z(Map<String, dynamic> json) {
+	factory AssociatedObject.fromMap(Map<String, dynamic> data) {
 		return AssociatedObject(
-			id: json['id'] as String?,
-			type: json['type'] as String?,
+			id: data['id'] as String?,
+			type: data['type'] as String?,
 		);
 	}
 
 
 
-	Map<String, dynamic> toIdEphkey1QHj3qGqBKivowsmYd2PzpAdObjectEphemeralKeyAssociatedObjectsIdCusRa2dmoz6BvrGgSTypeCustomerCreated1730798910Expires1730802510LivemodeFalseSecretEkTestYwNjdF8xUhnsuGtHcUjLaXZvd3NtLev2aDljdDNqNzVjWkRRak9InXpFaDbhnuVwT3M5U3g00abRc0C3z() {
-		return {
-			'id': id,
-			'type': type,		};
+	Map<String, dynamic> toMap() => {
+				'id': id,
+				'type': type,
+			};
+
+  /// `dart:convert`
+  ///
+  /// Parses the string and returns the resulting Json object as [AssociatedObject].
+	factory AssociatedObject.fromJson(String data) {
+		return AssociatedObject.fromMap(json.decode(data) as Map<String, dynamic>);
 	}
+  /// `dart:convert`
+  ///
+  /// Converts [AssociatedObject] to a JSON string.
+	String toJson() => json.encode(toMap());
 }

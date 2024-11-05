@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'associated_object.dart';
 
 class EphemeralKeyModel {
@@ -19,30 +21,40 @@ class EphemeralKeyModel {
 		this.secret, 
 	});
 
-	factory EphemeralKeyModel.fromIdEphkey1QHj3qGqBKivowsmYd2PzpAdObjectEphemeralKeyAssociatedObjectsIdCusRa2dmoz6BvrGgSTypeCustomerCreated1730798910Expires1730802510LivemodeFalseSecretEkTestYwNjdF8xUhnsuGtHcUjLaXZvd3NtLev2aDljdDNqNzVjWkRRak9InXpFaDbhnuVwT3M5U3g00abRc0C3z(Map<String, dynamic> json) {
+	factory EphemeralKeyModel.fromMap(Map<String, dynamic> data) {
 		return EphemeralKeyModel(
-			id: json['id'] as String?,
-			object: json['object'] as String?,
-			associatedObjects: (json['associated_objects'] as List<dynamic>?)
-						?.map((e) => AssociatedObject.fromIdEphkey1QHj3qGqBKivowsmYd2PzpAdObjectEphemeralKeyAssociatedObjectsIdCusRa2dmoz6BvrGgSTypeCustomerCreated1730798910Expires1730802510LivemodeFalseSecretEkTestYwNjdF8xUhnsuGtHcUjLaXZvd3NtLev2aDljdDNqNzVjWkRRak9InXpFaDbhnuVwT3M5U3g00abRc0C3z(e as Map<String, dynamic>))
+			id: data['id'] as String?,
+			object: data['object'] as String?,
+			associatedObjects: (data['associated_objects'] as List<dynamic>?)
+						?.map((e) => AssociatedObject.fromMap(e as Map<String, dynamic>))
 						.toList(),
-			created: json['created'] as int?,
-			expires: json['expires'] as int?,
-			livemode: json['livemode'] as bool?,
-			secret: json['secret'] as String?,
+			created: data['created'] as int?,
+			expires: data['expires'] as int?,
+			livemode: data['livemode'] as bool?,
+			secret: data['secret'] as String?,
 		);
 	}
 
 
 
-	Map<String, dynamic> toIdEphkey1QHj3qGqBKivowsmYd2PzpAdObjectEphemeralKeyAssociatedObjectsIdCusRa2dmoz6BvrGgSTypeCustomerCreated1730798910Expires1730802510LivemodeFalseSecretEkTestYwNjdF8xUhnsuGtHcUjLaXZvd3NtLev2aDljdDNqNzVjWkRRak9InXpFaDbhnuVwT3M5U3g00abRc0C3z() {
-		return {
-			'id': id,
-			'object': object,
-			'associated_objects': associatedObjects?.map((e) => e.toIdEphkey1QHj3qGqBKivowsmYd2PzpAdObjectEphemeralKeyAssociatedObjectsIdCusRa2dmoz6BvrGgSTypeCustomerCreated1730798910Expires1730802510LivemodeFalseSecretEkTestYwNjdF8xUhnsuGtHcUjLaXZvd3NtLev2aDljdDNqNzVjWkRRak9InXpFaDbhnuVwT3M5U3g00abRc0C3z()).toList(),
-			'created': created,
-			'expires': expires,
-			'livemode': livemode,
-			'secret': secret,		};
+	Map<String, dynamic> toMap() => {
+				'id': id,
+				'object': object,
+				'associated_objects': associatedObjects?.map((e) => e.toMap()).toList(),
+				'created': created,
+				'expires': expires,
+				'livemode': livemode,
+				'secret': secret,
+			};
+
+  /// `dart:convert`
+  ///
+  /// Parses the string and returns the resulting Json object as [EphemeralKeyModel].
+	factory EphemeralKeyModel.fromJson(String data) {
+		return EphemeralKeyModel.fromMap(json.decode(data) as Map<String, dynamic>);
 	}
+  /// `dart:convert`
+  ///
+  /// Converts [EphemeralKeyModel] to a JSON string.
+	String toJson() => json.encode(toMap());
 }
